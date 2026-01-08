@@ -94,4 +94,4 @@ se quiser ver como funciona a arquitetura clique aqui
 **->** [Ver Arquitetura](docs/arquitetura.md)
 
 Ideia de Composition Root clique aqui
-**->** [Ver Arquitetura](docs/compositionRoot.md)
+**->** [Ver Ideia](docs/compositionRoot.md)
