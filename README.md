@@ -4,16 +4,16 @@
   <a href="https://golang.org">
     <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" />
   </a>
-  <img src="https://img.shields.io/badge/Entropy%20_%20Recon-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Entropy_--_Recon-black?style=for-the-badge" />
   <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge&labelColor=black" />
+    <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" />
   </a>
-  <img src="https://img.shields.io/badge/Status-IN%20DEVELOPMENT-black?style=for-the-badge&labelColor=red" />
+  <img src="https://img.shields.io/badge/Status-IN%20DEVELOPMENT-red?style=for-the-badge" />
 </p>
 
-<div style="text-align: center;">
-  <img src="https://count.getloli.com/get/@entropy-recon-mrtokyo33?theme=booru-rfck" alt="counter" />
-</div>
+<p align="center">
+  <img src="https://count.getloli.com/get/@entropy-recon-mrtokyo33?theme=booru-rfck" />
+</p>
 
 # O que é o **Entropy Recon**
 No hacking, recon é provavelmente a etapa mais importante de qualquer ataque ou pentest. É quando você coleta informações sobre o alvo e começa a entender como as coisas realmente funcionam antes de tentar explorar qualquer coisa.
