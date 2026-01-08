@@ -8,7 +8,7 @@
   <a href="./LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge&labelColor=black" />
   </a>
-  <img src="https://img.shields.io/badge/Status-IN%20DEVELOPMENT-red?style=for-the-badge&labelColor=red" />
+  <img src="https://img.shields.io/badge/Status-IN%20DEVELOPMENT-black?style=for-the-badge&labelColor=red" />
 </p>
 
 
