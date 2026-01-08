@@ -7,6 +7,7 @@ import (
 	"entropy-recon/internal/models/primitives"
 	"entropy-recon/internal/services"
 	"entropy-recon/internal/store"
+	storeSql "entropy-recon/internal/store/sql"
 	"entropy-recon/internal/tools"
 )
 
@@ -16,7 +17,10 @@ func main() {
 		panic(err)
 	}
 
-	assetStore := store.NewMemoryAssetStore()
+	assetStore, err := storeSql.NewSQLiteAssetStore("recon.db")
+	if err != nil {
+		panic(err)
+	}
 
 	subfinderTool := &tools.MockSubfinder{}
 
