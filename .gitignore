@@ -1,2 +1,4 @@
-dolist.txt
-flags.txt
+forme/
+bin/
+.env
+.vscode/
