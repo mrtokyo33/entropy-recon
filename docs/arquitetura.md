@@ -30,3 +30,10 @@ Handlers não contêm lógica de domínio nem executam ferramentas externas. sua
 
 ### **Tools**
 **Tools** é a camada que representa diretamente as ferramentas de hacking utilizadas pelo sistema. Essa camada é chamada pelo Service, que recebe o retorno bruto e o transforma em estruturas técnicas neutras, sem aplicar regras ou conceitos de domínio.. Tools não mantêm estado de domínio nem aplicam lógica de negócio; elas apenas expõem os resultados brutos das ferramentas externas de forma padronizada para consumo pelos services.
+
+### **Store**
+**Store** é a camada responsável por guardar e recuperar dados do sistema. Ela funciona como o local onde o estado atual do dominio é mantido, permitindo que o sistema saiba o que já foi descoberto, salvo ou processado.
+
+A Store nao toma decisoes e nao aplica regras de negócios. Ela apenas armazena informações e as devolve quando solicitado
+
+Na Arquitetura criada, a Store existe para separar duas responsabilidades: *Services (decidem o que deve ser feito com os dados)* e *Store (cuida apenas de onde e como esses dados são mantidos)*
