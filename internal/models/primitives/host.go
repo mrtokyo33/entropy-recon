@@ -1,36 +1,50 @@
 package primitives
 
-import (
-	"errors"
-	"strings"
-)
+import "errors"
 
 var ErrInvalidHost = errors.New("invalid host")
 
+type HostType string
+
+const (
+	HostFQDN HostType = "fqdn"
+	HostIP   HostType = "ip"
+)
+
 type Host struct {
-	value string
+	kind HostType
+	fqdn *FQDN
+	ip   *IPAddress
 }
 
-func NewHost(raw string) (Host, error) {
-	h := strings.ToLower(strings.TrimSpace(raw))
-
-	h = strings.TrimSuffix(h, ".")
-
-	if h == "" || strings.Contains(h, " ") {
-		return Host{}, ErrInvalidHost
+func NewHostFromFQDN(f FQDN) Host {
+	return Host{
+		kind: HostFQDN,
+		fqdn: &f,
 	}
+}
 
-	if !strings.Contains(h, ".") {
-		return Host{}, ErrInvalidHost
+func NewHostFromIP(ip IPAddress) Host {
+	return Host{
+		kind: HostIP,
+		ip:   &ip,
 	}
+}
 
-	return Host{value: h}, nil
+func (h Host) Type() HostType {
+	return h.kind
 }
 
 func (h Host) String() string {
-	return h.value
+	if h.kind == HostIP {
+		return h.ip.String()
+	}
+	return h.fqdn.String()
 }
 
-func (h Host) Equals(other Host) bool {
-	return h.value == other.value
+func (h Host) IsInScope(domain Domain) bool {
+	if h.kind != HostFQDN {
+		return false
+	}
+	return h.fqdn.Domain().Equals(domain)
 }

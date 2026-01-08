@@ -4,10 +4,9 @@ import "context"
 
 type MockSubfinder struct{}
 
-func (m *MockSubfinder) Run(ctx context.Context, domain string) ([]string, error) {
-	return []string{
-		"www." + domain,
-		"api." + domain,
-		"admin." + domain,
+func (m *MockSubfinder) Run(ctx context.Context, domain string) ([]SubfinderResult, error) {
+	return []SubfinderResult{
+		{Host: "api." + domain, Source: "crtsh"},
+		{Host: "www." + domain, Source: "virustotal"},
 	}, nil
 }

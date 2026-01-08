@@ -3,6 +3,7 @@ package sql
 import (
 	"database/sql"
 	_ "embed"
+	"encoding/json"
 	"errors"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -45,6 +46,11 @@ func applySchema(db *sql.DB) error {
 }
 
 func (s *SQLiteAssetStore) Save(asset models.Asset) error {
+	var metadataJSON []byte
+	if asset.Source.Metadata != nil {
+		metadataJSON, _ = json.Marshal(asset.Source.Metadata)
+	}
+
 	_, err := s.db.Exec(
 		insertAssetQuery,
 		asset.ID,
@@ -53,6 +59,7 @@ func (s *SQLiteAssetStore) Save(asset models.Asset) error {
 		asset.State,
 		asset.Source.Tool,
 		asset.Source.Stage,
+		string(metadataJSON),
 		asset.CreatedAt,
 	)
 
@@ -106,7 +113,11 @@ func (s *SQLiteAssetStore) List(filter store.AssetFilter) ([]models.Asset, error
 	var assets []models.Asset
 
 	for rows.Next() {
-		var a models.Asset
+		var (
+			a           models.Asset
+			metadataRaw sql.NullString
+		)
+
 		err := rows.Scan(
 			&a.ID,
 			&a.Type,
@@ -114,10 +125,17 @@ func (s *SQLiteAssetStore) List(filter store.AssetFilter) ([]models.Asset, error
 			&a.State,
 			&a.Source.Tool,
 			&a.Source.Stage,
+			&metadataRaw,
 			&a.CreatedAt,
 		)
 		if err != nil {
 			return nil, err
+		}
+
+		if metadataRaw.Valid {
+			metadata := map[string]string{}
+			_ = json.Unmarshal([]byte(metadataRaw.String), &metadata)
+			a.Source.Metadata = metadata
 		}
 
 		assets = append(assets, a)
