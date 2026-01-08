@@ -6,10 +6,11 @@
   </a>
   <img src="https://img.shields.io/badge/Entropy_--_Recon-black?style=for-the-badge" />
   <a href="./LICENSE">
-    <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/License-MIT-black?style=for-the-badge&labelColor=black" />
   </a>
-  <img src="https://img.shields.io/badge/Status-IN%20DEVELOPMENT-red?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Status-IN%20DEVELOPMENT-red?style=for-the-badge&labelColor=red" />
 </p>
+
 
 <p align="center">
   <img src="https://count.getloli.com/get/@entropy-recon-mrtokyo33?theme=booru-rfck" />
